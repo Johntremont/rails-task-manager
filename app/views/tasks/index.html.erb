@@ -1,13 +1,21 @@
 <h1 class="text-center text-primary">My Tasks</h1>
-<div class="d-flex justify-content-between mx-3">
-  <% @tasks.each do |task| %>
-    <div class="card p-2 mb-4" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to task.title.upcase, task_path(task) %></h5>
-        <p class="card-text"><%= task.details.capitalize %></p>
-        <p class="list-group-item bg-success"><%= task.completed ? 'Completado' : 'Pendiente' %></p>
-      </div>
-    </div>
-  <%end%>
-</div>  
-  <%= link_to "crear nueva tarea", new_task_path, class: 'btn btn-primary d-flex justify-content-center w-50' %>
+<div class="container">
+  <div class="row">
+    <% @tasks.each do |task| %>
+      <div class="col-sm">
+        <div class="card p-2 mb-4" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to task.title.upcase, task_path(task) %></h5>
+            <p class="card-text"><%= task.details.capitalize %></p>
+            <%if task.completed == true %>
+              <p class="list-group-item bg-success">Completado!</p>
+            <%else%>
+              <p class="list-group-item bg-warning">Pendiente!</p>
+            <%end%>
+          </div>
+        </div>
+      </div>       
+    <%end%>
+  </div>
+</div>
+<%= link_to "crear nueva tarea", new_task_path, class: 'btn btn-primary d-flex justify-content-center w-50' %>

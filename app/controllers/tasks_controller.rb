@@ -11,27 +11,25 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.save
+    if @task.valid?
+      @task.save
 
-    redirect_to tasks_path
+      redirect_to tasks_path
+    else
+      redirect_to new_task_path
+    end
   end
 
-  def show
-    @task = Task.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @task = Task.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @task = Task.find(params[:id])
     @task.update(task_params)
     redirect_to tasks_path
   end
 
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     redirect_to tasks_path
   end
@@ -39,7 +37,7 @@ class TasksController < ApplicationController
   private
 
   def set_task
-    @restaurant = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def task_params

@@ -1,11 +1,16 @@
-<%= simple_form_for(@task) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :details %>
-  <%= f.text_field :details %>
-  <%= f.label :mark_as_completed %>
-  <%= f.check_box :completed, {}, true, false %>
-  <%= f.submit %>
-<% end %>
-
-<%= link_to "volver a tareas", tasks_path %>
+<div class="border py-5 px-5">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <%= simple_form_for(@task) do |f| %>
+        <h5 class="card-title"><%= f.label :title %></h5>
+        <%= f.text_field :title, class: "input-group-text", id: id="basic-addon1" %>
+        <p class="card-text mb-1 mt-3"><%= f.label :details %></p>
+        <%= f.text_field :details, class: "input-group-text", id: id="basic-addon1" %>
+        <%= f.label :mark_as_completed %>
+        <label class="form-check-label mt-3" for="flexCheckDefault"><%= f.check_box :completed, {}, true, false %></label>
+        <%= f.button :submit, "Add task", class: "btn btn-success" %> 
+      <% end %>
+    </div>  
+  </div> 
+  <%= link_to "volver a tareas", tasks_path, class: "btn btn-primary mt-3" %>
+</div>
