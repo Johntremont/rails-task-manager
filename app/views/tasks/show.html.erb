@@ -2,6 +2,6 @@
 
 <h2><%= @task.title %></h2>
 <p><%= @task.details %></p>
-<p><%= @task.completed %></p>
+<p><%= @task.completed ? 'completado' : 'pendiente'  %></p>
 
 <%= link_to "volver a tareas", tasks_path %> || <%= link_to "editar", edit_task_path(@task) %> || <%= link_to "Eliminar", task_path(@task), method: :delete %>

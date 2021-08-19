@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: %i[show edit update destroy]
+
   def index
     @tasks = Task.all
   end
@@ -35,6 +37,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def set_task
+    @restaurant = Task.find(params[:id])
+  end
 
   def task_params
     params.require(:task).permit(:title, :details, :completed)
