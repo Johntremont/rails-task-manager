@@ -13,8 +13,8 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.valid?
       @task.save
-
       redirect_to tasks_path
+      flash[:notice] = 'An email was sent for the user to confirm their account.'
     else
       redirect_to new_task_path
     end
